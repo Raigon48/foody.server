@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import myUserRoute from "./routes/myUserRoutes";
 import { v2 as cloudinary } from "cloudinary";
 import { myRestaurantRoute } from "./routes/myRestaurantRoute";
+import { restaurantRoute } from "./routes/restaurantRoute";
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(() => {
   console.log("Connected to database");
@@ -23,6 +24,7 @@ app.use(cors());
 
 app.use("/api/my/user", myUserRoute);
 app.use("/api/my/restaurant", myRestaurantRoute);
+app.use("/api/restaurant", restaurantRoute);
 
 app.listen(3001, () => {
   console.log("Server is listening on localhost:3001");
